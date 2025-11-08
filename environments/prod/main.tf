@@ -8,15 +8,15 @@ locals {
 
 module "rg" {
   source      = "../../modules/azurerm_resource_group"
-  rg_name     = "rg-prod-todoapp"
-  rg_location = "centralindia"
+  rg_name     = "rg1-prod-todoapp"
+  rg_location = "canadawest"
   rg_tags     = local.common_tags
 }
 
 module "rg1" {
   source      = "../../modules/azurerm_resource_group"
-  rg_name     = "rg-prod-todoapp-1"
-  rg_location = "centralindia"
+  rg_name     = "rg1-prod-todoapp-1"
+  rg_location = "canadawest"
   rg_tags     = local.common_tags
 }
 
@@ -24,8 +24,8 @@ module "acr" {
   depends_on = [module.rg]
   source     = "../../modules/azurerm_container_registry"
   acr_name   = "acrprodtodoapp"
-  rg_name    = "rg-prod-todoapp"
-  location   = "centralindia"
+  rg_name    = "rg1-prod-todoapp"
+  location   = "canadawest"
   tags       = local.common_tags
 }
 
@@ -33,8 +33,8 @@ module "sql_server" {
   depends_on      = [module.rg]
   source          = "../../modules/azurerm_sql_server"
   sql_server_name = "sql-prod-todoapp"
-  rg_name         = "rg-prod-todoapp"
-  location        = "centralindia"
+  rg_name         = "rg1-prod-todoapp"
+  location        = "canadawest"
   admin_username  = "prodopsadmin"
   admin_password  = "P@ssw01rd@123"
   tags            = local.common_tags
@@ -53,8 +53,8 @@ module "aks" {
   depends_on = [module.rg]
   source     = "../../modules/azurerm_kubernetes_cluster"
   aks_name   = "aks-prod-todoapp"
-  location   = "centralindia"
-  rg_name    = "rg-prod-todoapp"
+  location   = "canadawest"
+  rg_name    = "rg1-prod-todoapp"
   dns_prefix = "aks-prod-todoapp"
   tags       = local.common_tags
 }
@@ -64,7 +64,7 @@ module "pip" {
   source   = "../../modules/azurerm_public_ip"
   pip_name = "pip-prod-todoapp"
   rg_name  = "rg-prod-todoapp"
-  location = "centralindia"
+  location = "canadawest"
   sku      = "Basic"
   tags     = local.common_tags
 }
