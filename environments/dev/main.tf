@@ -10,7 +10,7 @@ locals {
 module "rg" {
   source      = "../../modules/azurerm_resource_group"
   rg_name     = "g2-rg-dev-todoapp-01"
-  rg_location = "centalindia"
+  rg_location = "centralindia"
   rg_tags     = local.common_tags
 }
 
@@ -19,7 +19,7 @@ module "acr" {
   source     = "../../modules/azurerm_container_registry"
   acr_name   = "g2acrdevtodoapp01"
   rg_name    = "g2-rg-dev-todoapp-01"
-  location   = "centalindia"
+  location   = "centralindia"
   tags       = local.common_tags
 }
 
@@ -28,7 +28,7 @@ module "sql_server" {
   source          = "../../modules/azurerm_sql_server"
   sql_server_name = "g2sql-dev-todoapp-01"
   rg_name         = "g2-rg-dev-todoapp-01"
-  location        = "centalindia"
+  location        = "centralindia"
   admin_username  = "devopsadmin"
   admin_password  = "P@ssw01rd@123"
   tags            = local.common_tags
@@ -47,7 +47,7 @@ module "aks" {
   depends_on = [module.rg]
   source     = "../../modules/azurerm_kubernetes_cluster"
   aks_name   = "g2-aks-dev-todoapp"
-  location   = "centalindia"
+  location   = "centralindia"
   rg_name    = "g2-rg-dev-todoapp-01"
   dns_prefix = "aks-dev-todoapp"
   tags       = local.common_tags
@@ -58,7 +58,7 @@ module "pip" {
   source   = "../../modules/azurerm_public_ip"
   pip_name = "g2-pip-dev-todoapp"
   rg_name  = "g2-rg-dev-todoapp-01"
-  location = "centalindia"
+  location = "centralindia"
   sku      = "Basic"
   tags     = local.common_tags
 }
