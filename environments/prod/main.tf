@@ -63,8 +63,8 @@ module "aks" {
 module "pip" {
   source   = "../../modules/azurerm_public_ip"
   pip_name = "pip-prod-todoapp"
-  rg_name  = "rg-prod-todoapp"
+  rg_name  = "rg1-prod-todoapp"
   location = "canadacentral"
-  sku      = "Basic"
+  sku      = "Standard"
   tags     = local.common_tags
 }
