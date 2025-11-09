@@ -7,7 +7,7 @@ terraform {
   }
   backend "azurerm" {
     resource_group_name  = "tfstatefile_rg_for_all_do_not_delete"
-    storage_account_name = "tfstatergb17g2devops"
+    storage_account_name = "tfstatestgaccg2b17"
     container_name       = "tfstatefilecontainer"
     key                  = "prodtodo.tfstate"
   }
