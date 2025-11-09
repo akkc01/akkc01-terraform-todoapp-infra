@@ -5,6 +5,7 @@ terraform {
       version = "4.41.0"
     }
   }
+  
   backend "azurerm" {
     resource_group_name  = "tfstatefile_rg_for_all_do_not_delete"
     storage_account_name = "tfstatestgaccg2b17"
