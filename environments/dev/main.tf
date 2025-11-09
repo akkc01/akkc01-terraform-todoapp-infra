@@ -59,6 +59,6 @@ module "pip" {
   pip_name = "g2-pip-dev-todoapp"
   rg_name  = "g2-rg-dev-todoapp-01"
   location = "centralindia"
-  sku      = "Basic"
+  sku      = "Standard"
   tags     = local.common_tags
 }
